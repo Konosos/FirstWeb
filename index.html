@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trang Web Cá Nhân</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #2e2e2e;
+            color: #f1f1f1;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #1b1b1b;
+            padding: 20px;
+            text-align: center;
+        }
+        header h1 {
+            margin: 0;
+            color: #e1e1e1;
+        }
+        .content {
+            padding: 20px;
+        }
+        .section {
+            margin-bottom: 40px;
+        }
+        .section h2 {
+            border-bottom: 2px solid #444;
+            padding-bottom: 10px;
+            color: #d1d1d1;
+        }
+        .file-upload {
+            margin-top: 20px;
+        }
+        .file-list {
+            margin-top: 20px;
+        }
+        .file-list ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        .file-list li {
+            margin-bottom: 10px;
+        }
+        .file-list a {
+            color: #f1f1f1;
+            text-decoration: none;
+            background-color: #444;
+            padding: 10px;
+            border-radius: 5px;
+            display: inline-block;
+        }
+        .file-list a:hover {
+            background-color: #666;
+        }
+        footer {
+            background-color: #1b1b1b;
+            padding: 10px;
+            text-align: center;
+            color: #e1e1e1;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Trang Web Cá Nhân</h1>
+</header>
+
+<div class="content">
+    <div class="section" id="about">
+        <h2>Giới thiệu</h2>
+        <p>Xin chào! Tôi là ***, và đây là trang web cá nhân của tôi. Tôi làm việc trong lĩnh vực *** và đam mê ***.</p>
+    </div>
+
+    <div class="section" id="files">
+        <h2>Tệp tải xuống</h2>
+        <div class="file-upload">
+            <p>Đăng tải tệp của bạn:</p>
+            <input type="file" id="fileInput">
+            <button onclick="uploadFile()">Tải lên</button>
+        </div>
+        <div class="file-list">
+            <h3>Danh sách tệp</h3>
+            <ul id="fileList">
+                <!-- Các tệp sẽ hiển thị ở đây -->
+            </ul>
+        </div>
+    </div>
+</div>
+
+<footer>
+    <p>&copy; 2024 Trang Web Cá Nhân. Mọi quyền được bảo lưu.</p>
+</footer>
+
+<script>
+    function uploadFile() {
+        const fileInput = document.getElementById('fileInput');
+        const fileList = document.getElementById('fileList');
+
+        if (fileInput.files.length > 0) {
+            const file = fileInput.files[0];
+            const listItem = document.createElement('li');
+            const link = document.createElement('a');
+            link.href = URL.createObjectURL(file);
+            link.download = file.name;
+            link.textContent = file.name;
+            listItem.appendChild(link);
+            fileList.appendChild(listItem);
+        }
+    }
+</script>
+
+</body>
+</html>
